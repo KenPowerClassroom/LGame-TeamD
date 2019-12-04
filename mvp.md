@@ -33,7 +33,7 @@ These will make up ythe simplest application for the user, allowing movement of 
 
 - The L gamer should run from start to finish with the following features:
 - There must be a 4x4 square board
-- There must be two player icons/sprites easily distinguishable in the shape of a 3x2 ìL shapeî
+- There must be two player icons/sprites easily distinguishable in the shape of a 3x2 ‚ÄúL shape‚Äù
 - There must be two neutral pieces 1x1 in size
 - At any given moment there must be 6 unoccupied squares
 - A turn order must be implemented between two users
@@ -69,12 +69,12 @@ This will be how the MVP functions. Extra features can be added.
 ### 1. Draw Board/Grid: 
 
 As a player, the board needs to be the correct size and visible so that they can see what is happening.
+Using SFML, draw a 4 x 4 grid of sf::Rectangles 100x100 each with a black outline around a white centre on a 900 x 800 window, leaving a 100 gap at the top of the screen for text displaying which player's turn it currently is. 
 
 ### 2. Draw pieces: 
 
-As a player, there needs to be two 1x1 neutral pieces and two 3x2 player pieces. 
-
-
+As a player, there needs to be two 1x1 neutral pieces and two 3x2 player pieces.
+Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50 and the player pieces will be sprites, one red and one blue which would be 200x300.
 
 
 ### 3. Movement for Player pieces: 
@@ -118,7 +118,7 @@ check if the L piece has been moved from its previous position.
 
 
 ### 8. Turn states: 
-As a player, the turns/game phases need to divided into a ìmoving player pieceî phase and ìmoving neutral pieceî phase, so that the gameplay happens in the correct order. 
+As a player, the turns/game phases need to divided into a ‚Äúmoving player piece‚Äù phase and ‚Äúmoving neutral piece‚Äù phase, so that the gameplay happens in the correct order. 
 
 ### 9. Check if Player has any moves available (check for a win/lose condition): 
 
