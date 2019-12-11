@@ -1,7 +1,5 @@
 # Minimal Viable Product (MVP) 
 
-# Minimal Viable Product (MVP) 
-
 The Minimal Viable Product is a product that has the minimum amount of features necessary to satisfy the user and to garner feedback for future development of the software and/or new software.
 
 ## Outline MVP functionality
