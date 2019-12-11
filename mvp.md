@@ -142,17 +142,17 @@ This will be how the MVP functions. Extra features can be added.
 - once a neutrals is selected you can not select the other one until your next turn.
 - press "space" key when you have selected a tile to confirm the piece's place.
 
-### 9. Check if Player has any moves available (check for a win/lose condition): 
-
-- Verify if there are any valid moves that the player can make by checking the position of the other L piece and both neutral pieces and making sure that there is enough free board space in the right shape to place the L piece in another position on the board.
-- If there are valid moves that the player can make, then allow the game to continue and the player to take their movement turn.
-- If there are no valid moves possible, then the player has lost the game and stop their turn and the gameplay there, the previous player that made the final move is the winner.
-- Display a game over screen and give the user the option to play again.
-
-### 10. Collision Detection:
+### 9. Collision Detection:
 
 - make sure the player is within the boundaries of the board
 - looking through the grid square by square to see if the player is in the grid boundaires
 - dont allow movement if collision found
 - looking through the grid square by square to see if the neutral pieces are in the same square
 - not allowing movement of the neutral piece if boolen is true
+
+### 10. Check if Player has any moves available (check for a win/lose condition): 
+
+- Verify if there are any valid moves that the player can make by checking the position of the other L piece and both neutral pieces and making sure that there is enough free board space in the right shape to place the L piece in another position on the board.
+- If there are valid moves that the player can make, then allow the game to continue and the player to take their movement turn.
+- If there are no valid moves possible, then the player has lost the game and stop their turn and the gameplay there, the previous player that made the final move is the winner.
+- Display a game over screen and give the user the option to play again.
