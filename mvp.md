@@ -65,8 +65,11 @@ This will be how the MVP functions. Extra features can be added.
 
 ### 1. Draw Board/Grid: 
 
-As a player, the board needs to be the correct size and visible so that they can see what is happening.
-Using SFML, draw a 4 x 4 grid of sf::Rectangles 100x100 each with a black outline around a white centre on a 900 x 800 window, leaving a 100 gap at the top of the screen for text displaying which player's turn it currently is. 
+- Use SFML
+- Draw a 4 x 4 grid of sf::Rectangles 100px X 100px each; which will effectively function as square tiles .
+- Each tile will have a black outline around a white centre for easy identification of each tile.
+- The board and text will be displayed on a 900px X 800px window 
+- 900px X 100px Rectangle shape will be at the top of the screen for text displaying which player's turn it currently is, effectively acting like UI. 
 
 ### 2. Draw pieces: 
 
