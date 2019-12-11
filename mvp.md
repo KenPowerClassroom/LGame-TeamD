@@ -85,7 +85,7 @@ This will be how the MVP functions. Extra features can be added.
 - The Arrow keys will be used to move the L Piece in 4 Directions (Up,Down,Left,Right) within the board parametres.
 - For example L Pieces will not move left if colliding with the left parametre of the board. They must be moved back, up or down, flipped, mirrored or set.
 - The L Piece will move from tile to tile depending on which arrow key is pressed.
-- The player will press the space bar to try to confirm/set their L piece into that place, it will be accepted if valid.
+- The player will press the space bar to try to confirm/set their L piece into that place, it will be accepted regardless of whether it is colliding with another piece or not.
 - L piece Movement does not depend on L piece Rotation as both can be coded and tested independently.
 
 ### 4. Movement for Neutral pieces: 
@@ -97,7 +97,7 @@ This will be how the MVP functions. Extra features can be added.
 - Therefor the Neutral Piece movement depends on the turn order and the valid movement of a Player's L Piece 
 - The Arrow keys will be used to move the Neutral Piece in 4 Directions (Up,Down,Left,Right) within the board parametres.
 - The Neutral Piece will move from tile to tile depending on which arrow key is pressed.
-- The Player will press the space bar to try to confirm/set their Neutral Piece into that place, it will be accepted if the tile is unoccupied.
+- The Player will press the space bar to try to confirm/set their Neutral Piece into that place, it will be accepted at this stage regardless of whether the space is occupied or not.
 - A neutral piece can be placed in the same position as it is an optional move.
 
 ### 5. Rotation of pieces: 
@@ -129,6 +129,7 @@ This will be how the MVP functions. Extra features can be added.
 - comparing the players current position with the previous position, at least one tile has to have changed position to be recognised as a valid move
 - display text if both postions are the same so the player has to make a new valid move
 - when turn is over it will move store the new location to the previous position
+- Check new position depends on the proper implementation of L piece movement, Draw pieces and draw board to work correctly.
 
 ### 8. Turn states: 
 
@@ -148,6 +149,7 @@ This will be how the MVP functions. Extra features can be added.
 - dont allow movement if collision found
 - looking through the grid square by square to see if the neutral pieces are in the same square
 - not allowing movement of the neutral piece if boolen is true
+- Collision depends on the proper implementation of L piece movement, neutral piece movement, Draw pieces and draw board to work correctly.
 
 ### 10. Check if Player has any moves available (check for a win/lose condition): 
 
