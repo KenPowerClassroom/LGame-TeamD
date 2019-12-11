@@ -109,9 +109,8 @@ This will be how the MVP functions. Extra features can be added.
 - The player will use the space key to set the piece.
 - L piece Rotation does not depend on L piece movement as both can be coded and tested independently.
  
-### 6. Flipping of pieces: 
+### 6. Flipping of L pieces: 
 
-- Only L pieces need to be able to be flipped (mirrored).
 - L pieces can be mirrored by pressing the "W" key.
 - When flipped/ Mirrored only the outlying tile of the L shaped will be moved as the other 3 tiles form a straight line, their position will not change.
 - The outlying tile will be flipped two tiles in a direction dependent on the current L piece's rotation.
