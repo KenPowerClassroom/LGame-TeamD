@@ -118,7 +118,7 @@ This will be how the MVP functions. Extra features can be added.
 - If the L piece's current Rotation is 0 (It is upright) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles Left when the L piece is flipped or mirrored.
 - If the L piece's current Rotation is 180 (It is upside-down) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles Right when the L piece is flipped or mirrored.
 - If the L piece's current Rotation is 90 (Sideways facing down) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles Up when the L piece is flipped or mirrored.
-- If the L piece's current Rotation is 90 (Sideways facing Up) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles down when the L piece is flipped or mirrored.
+- If the L piece's current Rotation is 270 (Sideways facing Up) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles down when the L piece is flipped or mirrored.
 - If the L Piece has already been flipped then the outer tile will be flipped two tiles in the opposite direction to that outlined above.
 - The L Pieces current mirrored state will be stored in a bool for simplicities sake so we can moniter whether or not it has already been mirrored, That way we can move the outer tile in the correct direction when "W" is pressed.
 - L Piece flipping therefor depends on L piece rotation to be working in order to mirror the shape correctly.
