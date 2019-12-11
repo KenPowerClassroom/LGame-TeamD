@@ -1,5 +1,7 @@
 # Minimal Viable Product (MVP) 
 
+# Minimal Viable Product (MVP) 
+
 The Minimal Viable Product is a product that has the minimum amount of features necessary to satisfy the user and to garner feedback for future development of the software and/or new software.
 
 ## Outline MVP functionality
@@ -27,7 +29,7 @@ The two neutral Pieces will be used for :
 - An optional tactical move for each player to consider at the end of each turn.
 - Checking with GameManager if that move is valid , if not it will be undone.
 
-These will make up ythe simplest application for the user, allowing movement of pieces, error checking, checking of a win condition, implementation of a turn order and thus the simplist functioning version of the game.
+These will make up the simplest application for the user, allowing movement of pieces, error checking, checking of a win condition, implementation of a turn order and thus the simplist functioning version of the game.
 
 ## List the features of the MVP
 
@@ -53,16 +55,13 @@ This will be how the MVP functions. Extra features can be added.
 ### Move timer
 - There will be no limit on how long a player can take to make their move
 ### No Visual Aids
-- There will be no highlighted sqyares suggesting extra movies
+- There will be no highlighted squares suggesting a valid move
 ### Undo move
 - The player's move will be final. They will not be able to undo their move before they choose whether or not to move a neutral piece and the turn changes.
 ### Text display for number of possible moves
-- There will not be a counter indicating how many moves a player can make per turn.
+- There will not be a counter indicating how many valid moves a player has remaining.
 ### Customised boards, player pieces, unlockable skins
 - There will be no extra visuals apart from the basic sprites maybe red/blue L blocks, white board, and black neutral pieces.
-### Drag, rotate, flip and drop pieces (we have a different method to place the squares)
-- The player will not be able to pick up their pieces and rotate / flip them using keys. There will be no visual effect of this manner. Instead the player will use the cursor to draw an L shape on the board and it will be calculated if that is an acceptable move. Rotations and flips will in effect take place, it's just the player will not be able to see them occur or do them manually.
-
 
 ## List of stories needed to complete the MVP `aim for 8 stories`
 
@@ -85,6 +84,7 @@ Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50 
 - For example L Pieces will not move left if colliding with the left parametre of the board. They must be moved back, up or down, flipped, mirrored or set.
 - The L Piece will move from tile to tile depending on which arrow key is pressed.
 - The player will press the space bar to try to confirm/set their L piece into that place, it will be accepted if valid.
+- L piece Movement does not depend on L piece Rotation as both can be coded and tested independently.
 
 ### 4. Movement for Neutral pieces: 
 
@@ -98,18 +98,28 @@ Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50 
 - The Player will press the space bar to try to confirm/set their Neutral Piece into that place, it will be accepted if the tile is unoccupied.
 - A neutral piece can be placed in the same position as it is an optional move.
 
-
 ### 5. Rotation of pieces: 
 
-
+- Only L pieces need to be able to be rotated.
+- L pieces will be rotatable clockwise using the "A" key and anti Clockwise using the "D" key.
+- L pieces will be rotated 90 degrees each time "D" is pressed as the L shape can not be placed diaginally, Lesser rotations would be unnecessary.
+- L pieces will be rotated -90 degrees each time "A" is pressed as the L shape can not be placed diaginally, Greater rotations would be unnecessary.
+- The player will use the space key to set the piece.
+- L piece Rotation does not depend on L piece movement as both can be coded and tested independently.
  
 ### 6. Flipping of pieces: 
 
-
-
-
-
-
+- Only L pieces need to be able to be flipped (mirrored).
+- L pieces can be mirrored by pressing the "W" key.
+- When flipped/ Mirrored only the outlying tile of the L shaped will be moved as the other 3 tiles form a straight line, their position will not change.
+- The outlying tile will be flipped two tiles in a direction dependent on the current L piece's rotation.
+- If the L piece's current Rotation is 0 (It is upright) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles Left when the L piece is flipped or mirrored.
+- If the L piece's current Rotation is 180 (It is upside-down) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles Right when the L piece is flipped or mirrored.
+- If the L piece's current Rotation is 90 (Sideways facing down) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles Up when the L piece is flipped or mirrored.
+- If the L piece's current Rotation is 90 (Sideways facing Up) and it has not been mirrored/flipped yet, then the outlying tile will be moved two tiles down when the L piece is flipped or mirrored.
+- If the L Piece has already been flipped then the outer tile will be flipped two tiles in the opposite direction to that outlined above.
+- The L Pieces current mirrored state will be stored in a bool for simplicities sake so we can moniter whether or not it has already been mirrored, That way we can move the outer tile in the correct direction when "W" is pressed.
+- L Piece flipping therefor depends on L piece rotation to be working in order to mirror the shape correctly.
 
 ### 7. Check New Position: 
 
@@ -125,17 +135,3 @@ As a player, the turns/game phases need to divided into a “moving player piece
 check if the player can make a move
 
 ### 10. Collision Detection:
-
-
-
-
-
-1. `Example story` Display baord
-
-As a player I need to be able to see the current board configuration so that I can understand my position and figure out my next move.
-
-2. Story-name
-
-As a user `usually player, but can be developer` I need to be able to `do something` so that I can `complete and objective`.
-
-
