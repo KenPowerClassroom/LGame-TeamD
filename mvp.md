@@ -73,9 +73,10 @@ This will be how the MVP functions. Extra features can be added.
 
 ### 2. Draw pieces: 
 
-As a player, there needs to be two 1x1 neutral pieces and two 3x2 player pieces.
-Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50 and the player pieces will be sprites, one red and one blue which would be 200x300.
-
+- Two 1 tile x 1 tile neutral pieces will be drawn
+- Two 3 tile x 2 tile player pieces will be drawn to form an L shaped piece.
+- Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50px
+- Using SFML, the player pieces will be sf::Rectangles, one red and one blue which would be 300px x 200px in the shape of an L.
 
 ### 3. Movement for Player pieces: 
 
