@@ -121,15 +121,34 @@ Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50 
 
 ### 7. Check New Position: 
 
-check if the L piece has been moved from its previous position. 
-
-
+- creating a vector to hold the players current position 
+- creating a vector to hold the players previous position 
+- checking the players current position with the previous position
+- display text if both postions are the same so the player
+- when turn is over it will move the new location to the previous position
 
 ### 8. Turn states: 
-As a player, the turns/game phases need to divided into a “moving player piece” phase and “moving neutral piece” phase, so that the gameplay happens in the correct order. 
+
+- using  an enum to check between the players movement and the neutrals movement.
+- display message in  text box saying who's turn it is
+- can not move player in neutrals turn 
+- can not move neutrals in players turn
+- select tab for selection of nutreal piece, when it is neutrals turn only
+- press the enterbutton for approval on the selction of that piece
+- once a neutrals is selected you can not select the other one until next neutrals turn.
+- press space when you have selected a square.
 
 ### 9. Check if Player has any moves available (check for a win/lose condition): 
 
-check if the player can make a move
+- Verify if there are any valid moves that the player can make by checking the position of the other L piece and both neutral pieces and making sure that there is enough free board space in the right shape to place the L piece in another position on the board.
+- If there are valid moves that the player can make, then allow the game to continue and the player to take their movement turn.
+- If there are no valid moves possible, then the player has lost the game and stop theit turn and the gameplay there.
+- Display a game over screen and give the user the option to play again.
 
 ### 10. Collision Detection:
+
+- make sure the player is within the boundaries of the board
+- looking through the grid square by square to see if the player is in the grid boundaires
+- dont allow movement if collision found
+- looking through the grid square by square to see if the nutreal pieces are in the same square
+- not allowing movement of the nutereal piece if boolen is true
