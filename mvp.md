@@ -61,7 +61,7 @@ This will be how the MVP functions. Extra features can be added.
 ### Customised boards, player pieces, unlockable skins
 - There will be no extra visuals apart from the basic sprites maybe red/blue L blocks, white board, and black neutral pieces.
 
-## List of stories needed to complete the MVP `aim for 8 stories`
+## Storyboards
 
 ### 1. Draw Board/Grid: 
 
@@ -123,26 +123,26 @@ Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50 
 
 - creating a vector to hold the players current position 
 - creating a vector to hold the players previous position 
-- checking the players current position with the previous position
-- display text if both postions are the same so the player
-- when turn is over it will move the new location to the previous position
+- comparing the players current position with the previous position, at least one tile has to have changed position to be recognised as a valid move
+- display text if both postions are the same so the player has to make a new valid move
+- when turn is over it will move store the new location to the previous position
 
 ### 8. Turn states: 
 
-- using  an enum to check between the players movement and the neutrals movement.
-- display message in  text box saying who's turn it is
-- can not move player in neutrals turn 
-- can not move neutrals in players turn
-- select tab for selection of nutreal piece, when it is neutrals turn only
-- press the enterbutton for approval on the selction of that piece
-- once a neutrals is selected you can not select the other one until next neutrals turn.
-- press space when you have selected a square.
+- using  an enum to change between each player's L piece movement and each player's chance to move a neutral piece.
+- display message in text box saying who's turn it is and which piece is currently being moved
+- can not move player piece when a neutral piece is to be moved 
+- can not move neutral piece while players piece is to be moved
+- Use "tab" key for selection of nutreal piece, when it is neutrals turn only
+- press the "enter" key for approval on the selction of that piece
+- once a neutrals is selected you can not select the other one until your next turn.
+- press "space" key when you have selected a tile to confirm the piece's place.
 
 ### 9. Check if Player has any moves available (check for a win/lose condition): 
 
 - Verify if there are any valid moves that the player can make by checking the position of the other L piece and both neutral pieces and making sure that there is enough free board space in the right shape to place the L piece in another position on the board.
 - If there are valid moves that the player can make, then allow the game to continue and the player to take their movement turn.
-- If there are no valid moves possible, then the player has lost the game and stop theit turn and the gameplay there.
+- If there are no valid moves possible, then the player has lost the game and stop their turn and the gameplay there, the previous player that made the final move is the winner.
 - Display a game over screen and give the user the option to play again.
 
 ### 10. Collision Detection:
@@ -150,5 +150,5 @@ Using SFML, the neutral pieces will be 2 yellow sf::Circles with a radius of 50 
 - make sure the player is within the boundaries of the board
 - looking through the grid square by square to see if the player is in the grid boundaires
 - dont allow movement if collision found
-- looking through the grid square by square to see if the nutreal pieces are in the same square
-- not allowing movement of the nutereal piece if boolen is true
+- looking through the grid square by square to see if the neutral pieces are in the same square
+- not allowing movement of the neutral piece if boolen is true
