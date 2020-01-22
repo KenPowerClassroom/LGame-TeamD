@@ -18,6 +18,8 @@ Game::Game() :
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 
+	
+
 	setupSprite(); // load texture
 }
 
@@ -100,6 +102,9 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+
+	neutral1.move();
+	neutral2.move();
 }
 
 /// <summary>
@@ -109,7 +114,9 @@ void Game::render()
 {
 	m_window.clear(sf::Color::White);
 	m_window.draw(m_welcomeMessage);
-	m_window.draw(m_logoSprite);
+
+	m_window.draw(neutral1.getBody());
+	m_window.draw(neutral2.getBody2());
 	m_window.display();
 }
 
