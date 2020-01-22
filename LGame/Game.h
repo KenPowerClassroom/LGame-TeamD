@@ -9,7 +9,7 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 #include <SFML/Graphics.hpp>
-
+#include"Player.h"
 class Game
 {
 public:
@@ -30,6 +30,8 @@ private:
 	void setupFontAndText();
 	void setupSprite();
 
+	Player m_player;
+	Player m_player2;
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
 	sf::Text m_welcomeMessage; // text used for message on screen
