@@ -8,13 +8,16 @@
 /// same as #pragma once
 /// Don't forget the endif at the bottom
 /// </summary>
-#include <SFML/Graphics.hpp>
+#include "Board.h"
 
 class Game
 {
 public:
 	Game();
 	~Game();
+
+	Board m_board;
+
 	/// <summary>
 	/// main method for game
 	/// </summary>
@@ -36,6 +39,8 @@ private:
 	sf::Texture m_logoTexture; // texture used for sfml logo
 	sf::Sprite m_logoSprite; // sprite used for sfml logo
 	bool m_exitGame; // control exiting game
+
+	
 
 };
 

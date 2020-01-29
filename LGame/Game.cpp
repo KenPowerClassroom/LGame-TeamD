@@ -3,7 +3,7 @@
 /// </summary>
 
 #include "Game.h"
-#include <iostream>
+
 
 
 
@@ -20,7 +20,6 @@ Game::Game() :
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
 }
-
 /// <summary>
 /// default destructor we didn't dynamically allocate anything
 /// so we don't need to free it, but mthod needs to be here
@@ -84,6 +83,7 @@ void Game::processEvents()
 /// <param name="t_event">key press event</param>
 void Game::processKeys(sf::Event t_event)
 {
+	
 	if (sf::Keyboard::Escape == t_event.key.code)
 	{
 		m_exitGame = true;
@@ -95,7 +95,9 @@ void Game::processKeys(sf::Event t_event)
 /// </summary>
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
-{
+{	
+	m_board.update(m_window);
+
 	if (m_exitGame)
 	{
 		m_window.close();
@@ -107,9 +109,11 @@ void Game::update(sf::Time t_deltaTime)
 /// </summary>
 void Game::render()
 {
-	m_window.clear(sf::Color::White);
-	m_window.draw(m_welcomeMessage);
-	m_window.draw(m_logoSprite);
+	m_window.clear(sf::Color::Black);
+	//m_window.draw(m_welcomeMessage);
+
+	m_board.render(m_window);
+
 	m_window.display();
 }
 
@@ -124,12 +128,12 @@ void Game::setupFontAndText()
 	}
 	m_welcomeMessage.setFont(m_ArialBlackfont);
 	m_welcomeMessage.setString("SFML Game");
-	m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
-	m_welcomeMessage.setPosition(40.0f, 40.0f);
-	m_welcomeMessage.setCharacterSize(80U);
-	m_welcomeMessage.setOutlineColor(sf::Color::Red);
-	m_welcomeMessage.setFillColor(sf::Color::Black);
-	m_welcomeMessage.setOutlineThickness(3.0f);
+	//m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
+	m_welcomeMessage.setPosition(600.0f, 40.0f);
+	m_welcomeMessage.setCharacterSize(12U);
+	//m_welcomeMessage.setOutlineColor(sf::Color::Red);
+	m_welcomeMessage.setFillColor(sf::Color::White);
+	//m_welcomeMessage.setOutlineThickness(3.0f);
 
 }
 
