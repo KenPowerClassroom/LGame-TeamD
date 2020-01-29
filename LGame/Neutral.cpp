@@ -12,10 +12,10 @@ Neutral::Neutral()
 void Neutral::init()
 {
 	neutral1.setRadius(35);
-	neutral1.setFillColor(sf::Color::Black);
-	neutral1.setPosition(200, 200);
+	neutral1.setFillColor(sf::Color::Yellow);
+	neutral1.setPosition(225, 225);
 	neutral2.setRadius(35);
-	neutral2.setFillColor(sf::Color::Black);
+	neutral2.setFillColor(sf::Color::Yellow);
 	neutral2.setPosition(500, 500);
 }
 
@@ -23,19 +23,19 @@ void Neutral::move()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		neutral1.move(-3, 0);
+		moveLeft1Square();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		neutral1.move(3, 0);
+		moveRight1Square();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		neutral1.move(0, -3);
+		moveUp1Square();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		neutral1.move(0, 3);
+		moveDown1Square();
 	}
 
 
@@ -57,6 +57,58 @@ void Neutral::move()
 		neutral2.move(0, 3);
 	}
 }
+
+void Neutral::moveLeft1Square()
+{
+
+	neutral1.move(-100, 0);
+}
+void Neutral::moveRight1Square()
+{
+
+	neutral1.move(100, 0);
+}
+void Neutral::moveUp1Square()
+{
+
+	neutral1.move(0, -100);
+}
+void Neutral::moveDown1Square()
+{
+
+	neutral1.move(0, 100);
+}
+
+
+void Neutral::moveN2Left1Square()
+{
+
+	neutral2.move(-100, 0);
+}
+void Neutral::moveN2Right1Square()
+{
+
+	neutral2.move(100, 0);
+}
+void Neutral::moveN2Up1Square()
+{
+
+	neutral2.move(0, -100);
+}
+void Neutral::moveN2Down1Square()
+{
+
+	neutral2.move(0, 100);
+}
+
+
+
+
+
+
+
+
+
 
 sf::CircleShape Neutral::getBody()
 {
