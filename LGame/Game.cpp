@@ -14,13 +14,14 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
+	m_window{ sf::VideoMode{ 1000U, 800U, 32U }, "SFML Game" },
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 
 	
 
 	setupSprite(); // load texture
+	m_player2.init();
 }
 /// <summary>
 /// default destructor we didn't dynamically allocate anything
@@ -75,6 +76,8 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
+		m_player.rotate(newEvent);
+		m_player2.rotate2(newEvent);
 	}
 }
 
@@ -105,8 +108,12 @@ void Game::update(sf::Time t_deltaTime)
 		m_window.close();
 	}
 
+	m_player.move();
+	m_player2.movement();
+
 	neutral1.move();
 	neutral2.move();
+
 }
 
 /// <summary>
@@ -119,11 +126,13 @@ void Game::render()
 	//m_window.draw(m_welcomeMessage);
 
 	m_board.render(m_window);
-  
+  m_window.draw(m_player.getShape());
+	m_window.draw(m_player2.getShape2());
   m_window.draw(neutral1.getBody());
 	m_window.draw(neutral2.getBody2());
 
 	m_window.display();
+	
 }
 
 /// <summary>
