@@ -11,11 +11,12 @@ Player::Player()
 	{
 		//error
 	}
+	x = 300;
+	y = 300;
 	body.setTexture(m_text);
-	body.setPosition(300, 300);
+	body.setPosition(x, y);
 	body.setOrigin(0, 200);
 
-	
 	m_speed = 0;
 }
 
@@ -23,23 +24,21 @@ void Player::move()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		body.move(-3, 0);
-		//tallPart.move(-3, 0);
+		moveLeftOneSquare();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		body.move(3, 0);
-		//tallPart.move(3, 0);
+		moveRightOneSquare();
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		body.move(0, -3);
-		//tallPart.move(0, -3);
+		moveUpOneSquare();
+
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		body.move(0, 3);
-		//tallPart.move(0, 3);
+		moveDownOneSquare();
+
 	}
 	
 
@@ -49,24 +48,49 @@ void Player::movement()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		body2.move(-3, 0);
-		//tallPart.move(-3, 0);
+		moveLeftOneSquare();
+		
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		body2.move(3, 0);
-		//tallPart.move(3, 0);
+		moveRightOneSquare();
+		
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		body2.move(0, -3);
-		//tallPart.move(0, -3);
+		moveUpOneSquare();
+
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		body2.move(0, 3);
-		//tallPart.move(0, 3);
+		moveDownOneSquare();
+
 	}
+}
+
+
+void Player::moveLeftOneSquare()
+{
+	body2.move(-100, 0);
+	x = 300 - 10;
+}
+
+void Player::moveUpOneSquare()
+{
+	body2.setPosition(x, y);
+	y = 300 - 100;
+}
+
+void Player::moveDownOneSquare()
+{
+	body2.setPosition(x, y);
+	y = 300 + 100;
+}
+
+void Player::moveRightOneSquare()
+{
+	body2.setPosition(x, y);
+	x = 300 + 100;
 }
 
 
@@ -91,6 +115,7 @@ sf::Sprite Player::getShape2()
 {
 	return body2;
 }
+
 
 
 
