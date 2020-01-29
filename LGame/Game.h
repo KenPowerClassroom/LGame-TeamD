@@ -8,14 +8,19 @@
 /// same as #pragma once
 /// Don't forget the endif at the bottom
 /// </summary>
-#include <SFML/Graphics.hpp>
+
+#include "Board.h"
 #include "Neutral.h"
+
 
 class Game
 {
 public:
 	Game();
 	~Game();
+
+	Board m_board;
+
 	/// <summary>
 	/// main method for game
 	/// </summary>
@@ -40,6 +45,8 @@ private:
 	
 	Neutral neutral1;
 	Neutral neutral2;
+
+	
 
 };
 
