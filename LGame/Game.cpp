@@ -1,11 +1,6 @@
-/// <summary>
-
-/// </summary>
 
 #include "Game.h"
-
-
-
+#include <iostream>
 
 /// <summary>
 /// default constructor
@@ -14,15 +9,14 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 1000U, 800U, 32U }, "SFML Game" },
-	m_exitGame{false} //when true game will exit
+	m_window{ sf::VideoMode{ 600, 400}, "L-Game" },
+	m_exitGame{ false } //when true game will exit
 {
 	setupFontAndText(); // load font 
-	
-
-	setupSprite(); // load texture
-	m_player2.init();
+	block.setSize(sf::Vector2f(cellSize, cellSize));
+	setupGrid();
 }
+
 /// <summary>
 /// default destructor we didn't dynamically allocate anything
 /// so we don't need to free it, but mthod needs to be here
@@ -30,7 +24,6 @@ Game::Game() :
 Game::~Game()
 {
 }
-
 
 /// <summary>
 /// main game loop
@@ -40,7 +33,7 @@ Game::~Game()
 /// if updates run slow then don't render frames
 /// </summary>
 void Game::run()
-{	
+{
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 	const float fps{ 60.0f };
@@ -58,6 +51,7 @@ void Game::run()
 		render(); // as many as possible
 	}
 }
+
 /// <summary>
 /// handle user and system events/ input
 /// get key presses/ mouse moves etc. from OS
@@ -68,7 +62,7 @@ void Game::processEvents()
 	sf::Event newEvent;
 	while (m_window.pollEvent(newEvent))
 	{
-		if ( sf::Event::Closed == newEvent.type) // window message
+		if (sf::Event::Closed == newEvent.type) // window message
 		{
 			m_exitGame = true;
 		}
@@ -76,8 +70,23 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
-		m_player.rotate(newEvent);
-		m_player2.rotate2(newEvent);
+		if (sf::Event::MouseButtonPressed == newEvent.type)
+		{
+			if (sf::Mouse::Left == newEvent.mouseButton.button)
+			{
+				clearCurrent();
+
+				if (newEvent.mouseButton.x < 400 && (grid[newEvent.mouseButton.y / 100][newEvent.mouseButton.x / 100].typeOfCell() == (2) || grid[newEvent.mouseButton.y / 100][newEvent.mouseButton.x / 100].typeOfCell() == (0)))
+				{
+					if (validateMovement())
+					{
+
+						changeGridData(newEvent.mouseButton.x / 100, newEvent.mouseButton.y / 100);
+					}
+				}
+
+			}
+		}
 	}
 }
 
@@ -88,7 +97,6 @@ void Game::processEvents()
 /// <param name="t_event">key press event</param>
 void Game::processKeys(sf::Event t_event)
 {
-	
 	if (sf::Keyboard::Escape == t_event.key.code)
 	{
 		m_exitGame = true;
@@ -100,39 +108,30 @@ void Game::processKeys(sf::Event t_event)
 /// </summary>
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
-{	
-	m_board.update(m_window);
-
+{
+	tempCheck();
 	if (m_exitGame)
 	{
 		m_window.close();
 	}
-
-	m_player.move();
-	m_player2.movement();
-
-	neutral1.move();
-	neutral2.move();
-
 }
+
 
 /// <summary>
 /// draw the frame and then switch buffers
 /// </summary>
 void Game::render()
 {
-
 	m_window.clear(sf::Color::Black);
-	//m_window.draw(m_welcomeMessage);
-
-	m_board.render(m_window);
-  m_window.draw(m_player.getShape());
-	m_window.draw(m_player2.getShape2());
-  m_window.draw(neutral1.getBody());
-	m_window.draw(neutral2.getBody2());
-
+	m_window.draw(m_welcomeMessage);
+	for (int row = 0; row < numRows; row++)
+	{
+		for (int col = 0; col < numCols; col++)
+		{
+			m_window.draw(grid[row][col].getBox());
+		}
+	}
 	m_window.display();
-	
 }
 
 /// <summary>
@@ -140,31 +139,126 @@ void Game::render()
 /// </summary>
 void Game::setupFontAndText()
 {
-	if (!m_ArialBlackfont.loadFromFile("ASSETS\\FONTS\\ariblk.ttf"))
+	if (!m_ArialBlackfont.loadFromFile("FONTS\\ariblk.ttf"))
 	{
 		std::cout << "problem loading arial black font" << std::endl;
 	}
 	m_welcomeMessage.setFont(m_ArialBlackfont);
-	m_welcomeMessage.setString("SFML Game");
-	//m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
-	m_welcomeMessage.setPosition(600.0f, 40.0f);
-	m_welcomeMessage.setCharacterSize(12U);
-	//m_welcomeMessage.setOutlineColor(sf::Color::Red);
-	m_welcomeMessage.setFillColor(sf::Color::White);
-	//m_welcomeMessage.setOutlineThickness(3.0f);
+	m_welcomeMessage.setString("");
+	m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
+	m_welcomeMessage.setPosition(40.0f, 40.0f);
+	m_welcomeMessage.setCharacterSize(80U);
+	m_welcomeMessage.setOutlineColor(sf::Color::Red);
+	m_welcomeMessage.setFillColor(sf::Color::Black);
+	m_welcomeMessage.setOutlineThickness(3.0f);
 
 }
 
-/// <summary>
-/// load the texture and setup the sprite for the logo
-/// </summary>
-void Game::setupSprite()
+void Game::tempCheck()
 {
-	if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
+	for (int i = 0; i < 4; i++)
 	{
-		// simple error message if previous call fails
-		std::cout << "problem loading logo" << std::endl;
+		for (int j = 0; j < 4; j++)
+		{
+
+		}
 	}
-	m_logoSprite.setTexture(m_logoTexture);
-	m_logoSprite.setPosition(300.0f, 180.0f);
 }
+
+
+void Game::setupGrid()
+// Initialize the game objects to play a new game
+{
+	//level data (local)
+	int levelData[numRows][numCols] = {
+		{1,2,2,0},
+		{0,2,3,0},
+		{0,2,3,0},
+		{0,3,3,1},
+
+	};
+
+	for (int row = 0; row < numRows; row++)
+	{
+		for (int col = 0; col < numCols; col++)
+		{
+			//sets up the cell data and tells it to set itself up
+			grid[row][col].setDataType(levelData[row][col]);
+			grid[row][col].setBoardPosition(col, row);
+			grid[row][col].setup();
+		}
+	}
+}
+
+void Game::changeGridData(int t_col, int t_row)
+{
+	grid[t_row][t_col].setDataType(2);
+	grid[t_row][t_col].setup();
+}
+
+bool Game::validateMovement()
+{
+	for (int row = 0; row < numRows; row++)
+	{
+		for (int col = 0; col < numCols; col++)
+		{
+
+			//sets up the cell data and tells it to set itself up
+			if (maxPlayernum < 4)
+			{
+				maxPlayernum++;
+				return true;
+			}
+			else
+			{
+				return false;
+				currentPLayernum = 3;
+				maxPlayernum = 0;
+			}
+			if (!(grid[row + 1][col].typeOfCell() == 2 && grid[row][col].typeOfCell() == 2 && grid[row][col + 1].typeOfCell() == 2 && grid[row][col + 2].typeOfCell() == 2 || grid[row - 1][col].typeOfCell() == 2 && grid[row][col].typeOfCell() == 2 && grid[row][col + 1].typeOfCell() == 2 && grid[row][col + 2].typeOfCell() == 2))
+			{
+				return false;
+			}
+
+			if (!(grid[row][col].typeOfCell() == 2 && grid[row][col + 1].typeOfCell() == 2 && grid[row][col + 2].typeOfCell() == 2 && grid[row - 1][col + 2].typeOfCell() == 2 || grid[row][col].typeOfCell() == 2 && grid[row][col + 1].typeOfCell() == 2 && grid[row][col + 2].typeOfCell() == 2 && grid[row + 1][col + 2].typeOfCell() == 2))
+			{
+				return false;
+			}
+
+			if (!(grid[row][col].typeOfCell() == 2 && grid[row + 1][col].typeOfCell() == 2 && grid[row + 2][col].typeOfCell() == 2 && grid[row + 2][col - 1].typeOfCell() == 2 || grid[row][col].typeOfCell() == 2 && grid[row + 1][col].typeOfCell() == 2 && grid[row + 2][col].typeOfCell() == 2 && grid[row + 2][col + 1].typeOfCell() == 2))
+			{
+				return false;
+			}
+
+			if (!(grid[row][col].typeOfCell() == 2 && grid[row + 1][col].typeOfCell() == 2 && grid[row + 2][col].typeOfCell() == 2 && grid[row][col - 1].typeOfCell() == 2 || grid[row][col].typeOfCell() == 2 && grid[row + 1][col].typeOfCell() == 2 && grid[row + 2][col].typeOfCell() == 2 && grid[row][col + 1].typeOfCell() == 2))
+			{
+				return false;
+			}
+		}
+	}
+
+}
+
+void Game::clearCurrent()
+{
+
+	for (int row = 0; row < numRows; row++)
+	{
+		for (int col = 0; col < numCols; col++)
+		{
+			if (grid[row][col].typeOfCell() == 2 && currentPLayernum >= 0)
+			{
+				currentPLayernum--;
+
+				grid[row][col].setDataType(0);
+
+
+				grid[row][col].setup();
+			}
+
+		}
+	}
+
+
+}
+

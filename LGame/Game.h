@@ -12,6 +12,7 @@
 #include "Board.h"
 #include "Neutral.h"
 #include"Player.h"
+#include<iostream>
 
 class Game
 {
@@ -19,7 +20,16 @@ public:
 	Game();
 	~Game();
 
-	Board m_board;
+
+	 static const int numRows = 4;
+	static const int numCols = 4;
+	const int cellSize = 100;
+	const int MAX_CELLS = 16;
+	int maxPlayernum = 0;
+    Cell grid[numRows][numCols]; //2d array to create the maze
+	int data[numRows][numCols] = { 0 };
+	int currentPLayernum = 3;
+	sf::RectangleShape block;
 
 	/// <summary>
 	/// main method for game
@@ -32,9 +42,14 @@ private:
 	void processKeys(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();
-	
+	void setupGrid();
+	void changeGridData(int t_col, int t_row);
+	bool validateMovement();
+	void clearCurrent();
 	void setupFontAndText();
-	void setupSprite();
+
+	void tempCheck();
+
 
 	Player m_player;
 	Player m_player2;
