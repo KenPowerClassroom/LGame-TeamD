@@ -22,14 +22,17 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Neutral.cpp" />
+    <ClCompile Include="yellowCircle.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="yellowCircleMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Neutral.h" />
+    <ClInclude Include="Type.h" />
+    <ClInclude Include="yellowCircle.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="yellowCircleMovement.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

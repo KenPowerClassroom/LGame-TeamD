@@ -20,5 +20,6 @@ public:
 	void setUpBoxColor();
 	void setBoardPosition(int t_x, int t_y);
 	sf::RectangleShape getBox();
+	inline int getTypeCell() { return typeOfCellData; }
 	inline void setPosition() { box.setPosition(index.x * 100, index.y * 100); }
 };

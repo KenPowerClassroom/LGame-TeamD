@@ -9,8 +9,8 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 
-#include "Board.h"
-#include "Neutral.h"
+#include"Board.h"
+#include"yellowCircle.h"
 #include"Player.h"
 #include<iostream>
 
@@ -60,8 +60,8 @@ private:
 	sf::Sprite m_logoSprite; // sprite used for sfml logo
 	bool m_exitGame; // control exiting game
 	
-	Neutral neutral1;
-	Neutral neutral2;
+	YellowCircle neutral1;
+	YellowCircle neutral2;
 
 	
 

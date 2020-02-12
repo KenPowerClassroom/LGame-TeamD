@@ -9,7 +9,7 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 600, 400}, "L-Game" },
+	m_window{ sf::VideoMode{900, 600}, "L-Game" },
 	m_exitGame{ false } //when true game will exit
 {
 	setupFontAndText(); // load font 
@@ -114,6 +114,8 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+	
+
 }
 
 
@@ -131,6 +133,8 @@ void Game::render()
 			m_window.draw(grid[row][col].getBox());
 		}
 	}
+	m_window.draw(neutral2.getBody2());
+	m_window.draw(neutral1.getBody());
 	m_window.display();
 }
 
@@ -174,7 +178,7 @@ void Game::setupGrid()
 		{1,3,3,0},
 		{0,2,3,0},
 		{0,2,3,0},
-		{0,2,2,1},
+		{0,2,2,4}
 
 	};
 

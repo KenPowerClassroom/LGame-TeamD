@@ -48,6 +48,10 @@ void Cell::setUpBoxColor()
 	{
 		box.setFillColor(sf::Color::Blue);
 	}
+	if (typeOfCellData == 4)
+	{
+		box.setFillColor(sf::Color::Black);
+	}
 }
 
 void Cell::setBoardPosition(int t_x, int t_y)

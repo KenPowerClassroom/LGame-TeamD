@@ -2,18 +2,17 @@
 #include "SFML/Graphics.hpp"
 
 
-class Neutral
+class YellowCircle
 {
 public:
 
 	sf::CircleShape neutral1;
 	sf::CircleShape neutral2;
 
-	 Neutral();
+	YellowCircle();
 
-	 void init();
-	 void move();
 	 sf::CircleShape getBody();
 	 sf::CircleShape getBody2();
+
 };
 
