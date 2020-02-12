@@ -42,11 +42,11 @@ void Cell::setUpBoxColor()
 	}
 	if (typeOfCellData == 2)
 	{
-		box.setFillColor(sf::Color::White);
+		box.setFillColor(sf::Color::Red);
 	}
 	if (typeOfCellData == 3)
 	{
-		box.setFillColor(sf::Color::White);
+		box.setFillColor(sf::Color::Blue);
 	}
 }
 

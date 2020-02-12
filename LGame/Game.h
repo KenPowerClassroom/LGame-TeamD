@@ -44,7 +44,7 @@ private:
 	void render();
 	void setupGrid();
 	void changeGridData(int t_col, int t_row);
-	bool validateMovement();
+	//bool validateMovement();
 	void clearCurrent();
 	void setupFontAndText();
 
