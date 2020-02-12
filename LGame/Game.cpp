@@ -114,7 +114,7 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
-	
+
 
 }
 
@@ -131,6 +131,7 @@ void Game::render()
 		for (int col = 0; col < numCols; col++)
 		{
 			m_window.draw(grid[row][col].getBox());
+			INP.input(grid);
 		}
 	}
 	m_window.draw(neutral2.getBody2());

@@ -11,6 +11,8 @@
 
 #include"Board.h"
 #include"yellowCircle.h"
+#include"yellowCircleMovement.h"
+#include"CircleInput.h"
 #include"Player.h"
 #include<iostream>
 
@@ -50,7 +52,7 @@ private:
 
 	void tempCheck();
 
-
+	CircleInput INP;
 	Player m_player;
 	Player m_player2;
 	sf::RenderWindow m_window; // main SFML window
